@@ -351,7 +351,7 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
   color: #e7515a;
 }
 
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+@media all and (forced-colors: none), (forced-colors: active) {
   /* IE10+ CSS styles go here */
   .dataTables_wrapper .dataTables_length select.form-control {
     background: transparent;

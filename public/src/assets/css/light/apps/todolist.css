@@ -476,7 +476,7 @@ body.layout-boxed .todo-inbox .todo-item .todo-item-inner p.todo-text {
     IE Support
 =====================
 */
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+@media all and (forced-colors: none), (forced-colors: active) {
   /* IE10+ CSS styles go here */
   .tab-title {
     width: 100%;

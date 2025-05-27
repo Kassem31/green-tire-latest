@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laratrust\Traits\HasRolesAndPermissions;
+use App\Notifications\CustomResetPasswordNotification;
 
 class User extends Authenticatable implements LaratrustUser
 {
@@ -46,6 +47,19 @@ class User extends Authenticatable implements LaratrustUser
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * Send the password reset notification.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        // Add logging to debug
+        \Log::info('Custom password reset notification called with token: ' . $token);
+        $this->notify(new CustomResetPasswordNotification($token));
     }
 
     public function createdBy()

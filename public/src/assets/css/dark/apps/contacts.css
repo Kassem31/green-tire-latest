@@ -353,7 +353,7 @@ body.dark .searchable-container .searchable-items.grid .items .action-btn .edit,
   width: 20px;
   fill: rgba(27, 85, 226, 0.2392156863);
 }
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+@media all and (forced-colors: none), (forced-colors: active) {
   body.dark {
     /* IE10+ CSS styles go here */
   }

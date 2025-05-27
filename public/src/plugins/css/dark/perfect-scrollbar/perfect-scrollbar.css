@@ -96,7 +96,7 @@ body.dark .ps__rail-y:hover > .ps__thumb-y, body.dark .ps__rail-y:focus > .ps__t
     overflow: auto !important;
   }
 }
-@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+@media screen and (forced-colors: active), (forced-colors: none) {
   body.dark .ps {
     overflow: auto !important;
   }

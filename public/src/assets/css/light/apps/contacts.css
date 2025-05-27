@@ -353,7 +353,7 @@
   fill: rgba(136, 142, 168, 0.09);
 }
 
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+@media all and (forced-colors: none), (forced-colors: active) {
   /* IE10+ CSS styles go here */
   .new-control.new-checkbox .new-control-indicator {
     top: -13px;

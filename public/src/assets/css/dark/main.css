@@ -3436,7 +3436,7 @@ body.dark .position-relative {
 /* 
     Bordered and Hover
 */
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+@media all and (forced-colors: none), (forced-colors: active) {
   body.dark .input-group > .form-control {
     flex: 1 1 auto;
     width: 1%;

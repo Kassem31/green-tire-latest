@@ -38,7 +38,7 @@ body.dark .fq-header-wrapper .autoComplete_wrapper > input {
   border: 1px solid #1b2e4b;
 }
 
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+@media all and (forced-colors: none), (forced-colors: active) {
   body.dark .fq-header-wrapper {
     background-image: none;
   }

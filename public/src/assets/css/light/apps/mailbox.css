@@ -967,7 +967,7 @@ input[type=file]::file-selector-button, input[type=file]::-webkit-file-upload-bu
     margin-top: 10px;
   }
 }
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+@media all and (forced-colors: none), (forced-colors: active) {
   /* IE10+ CSS styles go here */
   .tab-title {
     width: 100%;

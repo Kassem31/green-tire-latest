@@ -319,7 +319,7 @@ body.dark .table-cancel {
 body.dark .table-hover:not(.table-dark) tbody tr:hover .table-cancel {
   color: #e7515a;
 }
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+@media all and (forced-colors: none), (forced-colors: active) {
   body.dark .dataTables_wrapper .dataTables_length select.form-control {
     background: transparent;
     padding: 8px 10px 8px 14px;

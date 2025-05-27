@@ -470,7 +470,7 @@ body.dark .compose-box .compose-content form #editor-container h1, body.dark .co
     IE Support
 =====================
 */
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+@media all and (forced-colors: none), (forced-colors: active) {
   body.dark .tab-title {
     width: 100%;
   }

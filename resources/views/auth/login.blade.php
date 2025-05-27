@@ -81,6 +81,16 @@
                                     </div>
 
                                     <div class="col-12">
+                                        <div class="mb-3">
+                                            <div class="d-flex justify-content-end">
+                                                <a href="{{ route('password.request') }}" class="text-primary">
+                                                    Forgot your password?
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
                                         <div class="mb-4">
                                             <button class="btn btn-primary w-100">SIGN IN</button>
                                         </div>

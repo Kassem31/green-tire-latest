@@ -3309,7 +3309,7 @@ fieldset:disabled .btn {
   margin-left: 0px;
 }
 
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+@media all and (forced-colors: none), (forced-colors: active) {
   .input-group > .form-control {
     flex: 1 1 auto;
     width: 1%;

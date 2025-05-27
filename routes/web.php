@@ -18,6 +18,8 @@ use App\Http\Controllers\ObservationController;
 use App\Http\Controllers\RepairStepController;
 use App\Http\Controllers\InspectionTransactionController;
 use App\Http\Controllers\RepairTransactionController;
+use App\Mail\ResetPasswordMail;
+use App\Models\User;
 
 // Route::get('/', function () {
 //     return view('welcome');

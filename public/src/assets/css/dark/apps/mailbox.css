@@ -942,7 +942,7 @@ body.dark .fadeInUp {
     margin-top: 10px;
   }
 }
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+@media all and (forced-colors: none), (forced-colors: active) {
   body.dark {
     /* IE10+ CSS styles go here */
   }

@@ -798,7 +798,7 @@ body.dark .credits a {
     background-color: rgb(3, 3, 5);
   }
 }
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+@media all and (forced-colors: none), (forced-colors: active) {
   body.dark .chat-system .chat-box .overlay-phone-call {
     background-image: none;
   }
