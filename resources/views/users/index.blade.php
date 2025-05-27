@@ -4,9 +4,17 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('src/plugins/src/table/datatable/datatables.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('src/plugins/css/light/table/datatable/dt-global_style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('src/plugins/css/dark/table/datatable/dt-global_style.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('src/plugins/src/table/datatable/extensions/responsive/responsive.dataTables.min.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('src/plugins/src/table/datatable/extensions/responsive/responsive.dataTables.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('src/assets/css/responsive-table.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('src/assets/css/filter-column.css') }}">
+    <link rel="stylesheet" href="{{ asset('src/plugins/src/sweetalerts2/sweetalerts2.css') }}">
+    
+    <link href="{{ asset('src/assets/css/light/scrollspyNav.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('src/plugins/css/light/sweetalerts2/custom-sweetalert.css') }}" rel="stylesheet" type="text/css" />
+
+    <link href="{{ asset('src/assets/css/dark/scrollspyNav.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('src/plugins/css/dark/sweetalerts2/custom-sweetalert.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('content')
@@ -69,7 +77,8 @@
                                                     <x-edit-button route="users.edit" :param="$user['id']" name="user" />
                                                     <!-- Delete Button -->
                                                     <div style="margin-top: 0.08rem">
-                                                    <x-delete-button route="users.destroy" :param="$user['id']" name="user" />
+                                                        <x-delete-button route="users.destroy" :param="$user['id']"
+                                                            name="user" />
                                                     </div>
                                                 </div>
                                             </td>
@@ -97,7 +106,8 @@
 
     <!-- BEGIN PAGE LEVEL SCRIPTS -->
     <script src="{{ asset('src/plugins/src/table/datatable/datatables.js') }}"></script>
-    <script src="{{ asset('src/plugins/src/table/datatable/extensions/responsive/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('src/plugins/src/table/datatable/extensions/responsive/dataTables.responsive.min.js') }}">
+    </script>
     <script>
         $('#zero-config').DataTable({
             "dom": "<'dt--top-section'<'row'<'col-12 col-sm-6 d-flex justify-content-sm-start justify-content-center'l><'col-12 col-sm-6 d-flex justify-content-sm-end justify-content-center mt-sm-0 mt-3'>>>" +
@@ -119,18 +129,20 @@
             "responsive": {
                 details: false
             },
-            "columnDefs": [
-                { 
-                    "targets": [3],
-                    "orderable": false,
-                    "className": "text-center"
-                }
-            ],
-            "order": [[0, "asc"]]
+            "columnDefs": [{
+                "targets": [3],
+                "orderable": false,
+                "className": "text-center"
+            }],
+            "order": [
+                [0, "asc"]
+            ]
         });
     </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
+    <script src="{{ asset('src/plugins/src/sweetalerts2/sweetalerts2.min.js') }}"></script>
+    <script src="{{ asset('src/plugins/src/sweetalerts2/custom-sweetalert.js') }}"></script>
 
     @if (session('success'))
         <script>

@@ -4,6 +4,13 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('src/plugins/src/table/datatable/datatables.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('src/plugins/css/light/table/datatable/dt-global_style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('src/plugins/css/dark/table/datatable/dt-global_style.css') }}">
+    <link rel="stylesheet" href="{{ asset('src/plugins/src/sweetalerts2/sweetalerts2.css') }}">
+    
+    <link href="{{ asset('src/assets/css/light/scrollspyNav.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('src/plugins/css/light/sweetalerts2/custom-sweetalert.css') }}" rel="stylesheet" type="text/css" />
+
+    <link href="{{ asset('src/assets/css/dark/scrollspyNav.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('src/plugins/css/dark/sweetalerts2/custom-sweetalert.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('content')
@@ -15,7 +22,7 @@
             <div class="page-meta">
                 <nav class="breadcrumb-style-one" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Categories</a></li>
+                        <li class="breadcrumb-item"><a href="#">Roles</a></li>
                     </ol>
                 </nav>
             </div>
@@ -42,6 +49,13 @@
                                         <td>{{ $role->display_name }}</td>
                                         <td>{{ $role->description }}</td>
                                         <td>
+                                            {{-- DEBUG: Check permissions --}}
+                                            @if(auth()->user()->can('delete_role'))
+                                                <span style="color: green;">✓ Has delete_role permission</span><br>
+                                            @else
+                                                <span style="color: red;">✗ Missing delete_role permission</span><br>
+                                            @endif
+                                            
                                             {{-- <x-show-button route="roles.show" :param="$role->id" name="role" /> --}}
                                             <x-edit-button route="roles.edit" :param="$role->id" name="role" />
                                             <x-delete-button route="roles.destroy" :param="$role->id" name="role" />
@@ -86,4 +100,111 @@
             "searching": false // Disable the search functionality
         });
     </script>
+
+    <script src="{{ asset('src/plugins/src/sweetalerts2/sweetalerts2.min.js') }}"></script>
+    <script src="{{ asset('src/plugins/src/sweetalerts2/custom-sweetalert.js') }}"></script>
+
+    <script>
+        // Test if SweetAlert is loaded
+        console.log('SweetAlert loaded:', typeof Swal);
+        if (typeof Swal === 'undefined') {
+            console.error('SweetAlert is not loaded!');
+        }
+    </script>
+
+    @if (session('success'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+                const ToastSuccess = Swal.mixin({
+                    toast: true,
+                    position: 'bottom-end',
+                    showConfirmButton: false,
+                    timer: 4000,
+                    timerProgressBar: true,
+                    background: isDarkMode ? '#333' : '#fff',
+                    color: isDarkMode ? '#fff' : '#000',
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                });
+
+                ToastSuccess.fire({
+                    icon: 'success',
+                    title: '{{ session('success') }}'
+                });
+
+                // Listen for theme changes to update toast colors
+                window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(event) {
+                    const newColorScheme = event.matches ? 'dark' : 'light';
+                    Swal.update({
+                        background: newColorScheme === 'dark' ? '#333' : '#fff',
+                        color: newColorScheme === 'dark' ? '#fff' : '#000'
+                    });
+                });
+            });
+        </script>
+    @endif
+
+    <!-- DELETE BUTTON FUNCTIONALITY -->
+    <script>
+        console.log('Delete button script loaded');
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, looking for delete buttons');
+            const deleteButtons = document.querySelectorAll('.delete-button');
+            console.log('Found delete buttons:', deleteButtons.length);
+            
+            deleteButtons.forEach(button => {
+                console.log('Setting up delete button:', button);
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('Delete button clicked');
+                    
+                    const deleteUrl = this.getAttribute('data-url');
+                    console.log('Delete URL:', deleteUrl);
+                    
+                    const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: "You won't be able to revert this!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes, delete it!',
+                        background: isDarkMode ? '#333' : '#fff',
+                        color: isDarkMode ? '#fff' : '#000'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            console.log('Delete confirmed');
+                            // Create and submit the form to delete the role
+                            const form = document.createElement('form');
+                            form.method = 'POST';
+                            form.action = deleteUrl;
+
+                            const csrfToken = document.createElement('input');
+                            csrfToken.type = 'hidden';
+                            csrfToken.name = '_token';
+                            csrfToken.value = '{{ csrf_token() }}';
+
+                            const methodInput = document.createElement('input');
+                            methodInput.type = 'hidden';
+                            methodInput.name = '_method';
+                            methodInput.value = 'DELETE';
+
+                            form.appendChild(csrfToken);
+                            form.appendChild(methodInput);
+                            document.body.appendChild(form);
+                            form.submit();
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+@endsection
 

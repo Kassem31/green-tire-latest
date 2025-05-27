@@ -3,7 +3,7 @@
 <link href="{{ asset('src/assets/css/dark/dashboard/dash_1.css') }}" rel="stylesheet" type="text/css" /> --}}
 <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
 
-<title>{{ config('app.name', 'Laravel') }}</title>
+<title>{{ config('app.name', 'Green Tire') }}</title>
 <link href="{{ asset('src/assets/css/responsive.css') }}" rel="stylesheet" type="text/css" />
 
 <meta charset="utf-8">
@@ -17,7 +17,7 @@
 <script src="{{ asset('layouts/collapsible-menu/loader.js') }}"></script>
 
 <!-- BEGIN GLOBAL MANDATORY STYLES -->
-<link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+{{-- <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet"> --}}
 <link href="{{ asset('src/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ asset('layouts/collapsible-menu/css/light/plugins.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ asset('layouts/collapsible-menu/css/dark/plugins.css') }}" rel="stylesheet" type="text/css" />
