@@ -1,0 +1,100 @@
+/* Bootstrap 5 Dropdown Fix for Navbar */
+.dropdown-menu-end {
+    right: 0 !important;
+    left: auto !important;
+}
+
+.navbar .dropdown-menu {
+    position: absolute !important;
+    z-index: 1050 !important; /* Ensure dropdown is on top */
+    margin-top: 0.125rem;
+    min-width: 10rem;
+    padding: 0.5rem 0;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.25rem;
+    background-color: #fff;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.175);
+}
+
+/* Standard Bootstrap display behavior */
+.dropdown-menu.show {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Regular display setting when hidden */
+.dropdown-menu {
+    display: none !important; /* Force standard bootstrap behavior */
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.2s, opacity 0.2s linear;
+}
+
+/* Prevent text selection in dropdown toggle */
+.dropdown-toggle {
+    user-select: none;
+}
+
+/* Fix for mobile */
+@media (max-width: 768px) {
+    .navbar .dropdown-menu {
+        width: 250px !important;
+        max-height: 80vh !important; /* Limit height on mobile */
+        overflow-y: auto !important; /* Enable scrolling if needed */
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1) !important; /* Better shadow on mobile */
+        border-radius: 0.5rem !important; /* Rounded corners */
+        right: 0 !important; /* Align to right */
+        left: auto !important; /* Ensure left is not set */
+    }
+    
+    /* Properly position dropdown on mobile */
+    .dropdown-menu-end {
+        right: 0 !important;
+        left: auto !important;
+    }
+    
+    /* Better tap targets on mobile */
+    .dropdown-menu li a, 
+    .dropdown-menu li .dropdown-item {
+        padding: 0.75rem 1rem !important; /* Larger tap targets */
+        font-size: 1rem !important; /* Larger text */
+    }
+    
+    /* Better mobile scrolling */
+    body.mobile-view {
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Ensure proper touch behavior */
+    .dropdown-toggle {
+        touch-action: manipulation;
+    }
+    
+    /* Fix layout issues with welcome message on smaller screens */
+    .alert h5.alert-heading {
+        font-size: 1.75rem !important; /* Smaller on mobile */
+        word-break: break-word; /* Prevent overflow */
+    }
+    
+    /* Center flex items properly on mobile */
+    .d-flex.align-items-center.justify-content-center {
+        flex-wrap: wrap;
+    }
+    
+    /* Ensure dropdowns close properly on mobile */
+    .dropdown-menu.show {
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    /* Remove any potential z-index issues */
+    .user-profile-dropdown {
+        position: static; 
+    }
+    
+    /* Ensure user dropdown is visible */
+    .user-profile-dropdown .dropdown-menu {
+        position: absolute !important;
+    }
+}

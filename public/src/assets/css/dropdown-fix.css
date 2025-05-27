@@ -1,0 +1,22 @@
+/* Custom CSS for navbar dropdown */
+.user-profile-dropdown .dropdown-menu.show {
+    display: block;
+    position: absolute;
+    transform: translate3d(0px, 50px, 0px);
+    top: 0px;
+    left: auto;
+    right: 0px;
+    will-change: transform;
+    margin: 0;
+}
+
+/* Fix for dropdown positioning on mobile */
+@media (max-width: 767px) {
+    .user-profile-dropdown .dropdown-menu.show {
+        position: absolute;
+        right: 0;
+        left: auto;
+        transform: translate3d(0px, 45px, 0px);
+        width: 280px;
+    }
+}

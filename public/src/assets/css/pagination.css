@@ -1,0 +1,89 @@
+/* Custom Pagination Styles */
+.pagination-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.pagination-info {
+    margin-bottom: 0.5rem;
+}
+
+.pagination-info p {
+    margin-bottom: 0;
+    font-size: 0.875rem;
+}
+
+@media (min-width: 768px) {
+    .pagination-wrapper {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    .pagination-info {
+        margin-bottom: 0;
+    }
+}
+
+.pagination-container {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.pagination {
+    --bs-pagination-padding-x: 0.75rem;
+    --bs-pagination-padding-y: 0.5rem;
+    --bs-pagination-font-size: 0.875rem;
+    --bs-pagination-color: var(--primary);
+    --bs-pagination-bg: var(--bs-body-bg);
+    --bs-pagination-border-width: 1px;
+    --bs-pagination-border-color: #e0e6ed;
+    --bs-pagination-border-radius: 6px;
+    --bs-pagination-hover-color: var(--primary);
+    --bs-pagination-hover-bg: #ebedf2;
+    --bs-pagination-hover-border-color: #dee2e6;
+    --bs-pagination-focus-color: var(--bs-link-hover-color);
+    --bs-pagination-focus-bg: var(--bs-secondary-bg);
+    --bs-pagination-focus-box-shadow: 0 0 0 0.25rem rgba(var(--primary-rgb), 0.25);
+    --bs-pagination-active-color: #fff;
+    --bs-pagination-active-bg: var(--primary);
+    --bs-pagination-active-border-color: var(--primary);
+    --bs-pagination-disabled-color: #d3d3d3;
+    --bs-pagination-disabled-bg: #f1f2f3;
+    --bs-pagination-disabled-border-color: #e0e6ed;
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+}
+
+.pagination-style-1 .page-item:first-child .page-link, 
+.pagination-style-1 .page-item:last-child .page-link {
+    border-radius: 50%;
+    padding: 5px 9px;
+}
+
+.pagination-style-1 .page-item .page-link {
+    border-radius: 4px;
+    margin: 0 3px;
+    font-weight: 600;
+}
+
+.pagination-style-1 .page-item.active .page-link {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+}
+
+.pagination-style-1 .page-item:not(.active) .page-link:hover {
+    background-color: #ebedf2;
+    color: var(--primary);
+}
+
+.pagination-style-1 .page-item.disabled .page-link {
+    color: #d3d3d3;
+    pointer-events: none;
+    background-color: #f1f2f3;
+    border-color: #e0e6ed;
+}

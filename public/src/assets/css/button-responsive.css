@@ -1,0 +1,64 @@
+/* Button Responsive Styles */
+.btn-sm {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.4rem 0.75rem;
+    margin: 0.125rem;
+    white-space: nowrap;
+    min-width: fit-content;
+}
+
+.btn-sm i {
+    font-size: 0.875rem;
+}
+
+.btn-sm span {
+    font-size: 0.875rem;
+    display: inline-block;
+}
+
+/* Improve touch targets on mobile */
+@media (max-width: 767px) {
+    .btn-sm {
+        padding: 0.5rem 0.875rem;
+        min-height: 36px;
+    }
+    
+    td .btn-sm {
+        margin-bottom: 0.25rem;
+    }
+
+    td .form-inline {
+        display: inline-flex;
+    }
+}
+
+/* Ensure buttons wrap properly in table cells */
+td {
+    white-space: nowrap;
+}
+
+/* Add spacing between buttons in a group */
+.btn-group-sm > .btn,
+td .btn + .btn,
+td form + form,
+td a + form,
+td form + a {
+    margin-left: 0.25rem;
+}
+
+/* Improve button visibility */
+.btn-info {
+    color: #fff;
+}
+
+.btn-info:hover {
+    color: #fff;
+    filter: brightness(0.95);
+}
+
+/* Add active state for touch feedback */
+.btn:active {
+    transform: translateY(1px);
+}
